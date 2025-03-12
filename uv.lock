@@ -94,7 +94,7 @@ wheels = [
 
 [[package]]
 name = "donotcommit-com"
-version = "0.1.0"
+version = "0.0.0"
 source = { virtual = "." }
 dependencies = [
     { name = "fastapi", extra = ["standard"] },
