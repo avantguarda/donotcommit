@@ -8,7 +8,7 @@ app = FastAPI()
 
 PROJECT_ROOT: Final = Path(__file__).parent.parent
 GITIGNORE_FOLDER: Final = PROJECT_ROOT / 'gitignore'
-TEMPLATES: Final = GITIGNORE_FOLDER.glob('*.gitignore')
+TEMPLATES: Final = tuple(GITIGNORE_FOLDER.glob('*.gitignore'))
 
 
 @app.get('/')
@@ -21,6 +21,7 @@ async def list_templates():
     """
     Lists all available gitignore templates by github.com/github/gitignore
     """
+
     language_names = sorted([
         Path(file).name.lower().removesuffix('.gitignore')
         for file in TEMPLATES

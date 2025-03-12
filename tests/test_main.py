@@ -20,3 +20,4 @@ async def test_list_templates_must_return_available_gitignore_templates(
 
     assert response.status_code == HTTPStatus.OK
     assert response.headers['content-type'] == 'text/plain; charset=utf-8'
+    assert response.text
