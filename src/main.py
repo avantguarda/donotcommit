@@ -1,6 +1,7 @@
 from pathlib import Path
 
-from fastapi import FastAPI, Response
+from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
 
 app = FastAPI()
 
@@ -10,9 +11,11 @@ async def read_root():
     return {'message': 'Hello, world!'}
 
 
-@app.get('/api/list')
-async def list_templates() -> Response:
-    """Lists all available gitignore templates by github.com/github/gitignore"""
+@app.get('/api/list', response_class=PlainTextResponse)
+async def list_templates():
+    """
+    Lists all available gitignore templates by github.com/github/gitignore
+    """
     project_root = Path(__file__).parent.parent
     gitignore_folder = project_root / 'gitignore'
 
@@ -27,4 +30,4 @@ async def list_templates() -> Response:
         for i in range(0, len(language_names), 5)
     )
 
-    return Response(content=formatted_names, media_type='application/text')
+    return formatted_names
