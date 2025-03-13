@@ -1,33 +1,22 @@
 # Do not commit it
+I once committed a file I should have ignored. Do you know what happened? A coworker's computer exploded. Now you know this is serious, so you should consider using our API.  
+This API wil be compliant with [gitignore.io](https://www.toptal.com/developers/gitignore) by toptal, so you can just change your request from: 
 
-I once commit a file I should ignore. Do you know what happened? A coworker computer exploded. Now you know this is serious, you should consider using our API.
-
-This API wil be compliant with [gitignore.io](https://www.toptal.com/developers/gitignore) by toptal, so you can just change your request from:
-
-`toptal.com/developers/gitignore/api/`
-
-to 
-
-`donotcommit.com/api/`
+`toptal.com/developers/gitignore/api/` to `donotcommit.com/api/`
 
 Nice, right?
 
-# Templates source
-
+## Templates source
 For now, we are using [github/gitignore](https://github.com/github/gitignore) as the gitignore templates source, but we recognize that they take some time to accept PRs. This delay also motivated toptal team to make their own gitignore source, but it is archived now. That's why we are building an alternative.
 
-# Clients
-
-Use one client to make your life easier when managing gitignore files:
-
+## Clients
+Use one client to make your life easier when managing gitignore files:  
 - zignr: <https://github.com/ivansantiagojr/zignr>
 
 You can list your client here, just open a PR!
 
-# Contributing
-
-## Setting Up the Development Environment
-
+## Contributing
+### Setting Up the Development Environment
 To set up the development environment, you'll need to have Python 3.13 installed. You should use [uv](https://docs.astral.sh/uv/) to manage dependencies and run commands.
 
 1. **Clone the Repository:**
@@ -54,8 +43,7 @@ To set up the development environment, you'll need to have Python 3.13 installed
    source .venv/bin/activate
    ```
 
-## Running locally
-
+### Running locally
 To run the application, use the following command:
 
 ```sh
@@ -64,8 +52,7 @@ task run
 
 This command will start a local development server.
 
-## Development Commands
-
+### Development Commands
 We use `taskipy` for task management. Here are some useful commands:
 
 - **Linting:**
@@ -100,8 +87,7 @@ We use `taskipy` for task management. Here are some useful commands:
 
   This will run Mypy for type checking.
 
-## Development Tools Configuration
-
+### Development Tools Configuration
 - **Pytest:**
 
   Configuration for pytest is specified in `pyproject.toml` under `[tool.pytest.ini_options]`.
@@ -114,7 +100,5 @@ We use `taskipy` for task management. Here are some useful commands:
 
   Configuration for Ruff, including linting and formatting settings, is specified under `[tool.ruff]`.
 
-## Contribution
-
+### Contributions
 If you would like to contribute to donotcommit API, please fork the repository and submit a pull request with your changes. Ensure that your changes pass the linting and testing requirements before submitting.
-
