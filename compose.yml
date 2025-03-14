@@ -1,0 +1,6 @@
+services:
+  app:
+    image: donotcommit-app
+    build: .
+    ports:
+      - "8000:8000"
