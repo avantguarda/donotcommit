@@ -5,11 +5,11 @@ from typing import Final
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import PlainTextResponse
 
-app = FastAPI()
+app = FastAPI(title='donotcommit.com')
 
 PROJECT_ROOT: Final = Path(__file__).parent.parent
 GITIGNORE_FOLDER: Final = PROJECT_ROOT / 'gitignore'
-TEMPLATES: Final = tuple(GITIGNORE_FOLDER.glob('*.gitignore'))
+TEMPLATES: Final = tuple(GITIGNORE_FOLDER.rglob('*.gitignore'))
 
 
 @app.get('/')
