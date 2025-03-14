@@ -8,7 +8,7 @@ COPY . /app
 
 # Install the application dependencies.
 WORKDIR /app
-RUN uv sync --frozen --no-cache
+RUN uv sync --frozen --no-cache --no-dev
 
 # Run the application.
 CMD ["/app/.venv/bin/fastapi", "run", "src/main.py"]
