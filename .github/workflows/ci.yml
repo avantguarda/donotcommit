@@ -1,0 +1,31 @@
+name: Continuos Integration
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      
+      - name: Installing Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13
+
+      - name: Installing uv
+        run: pipx install uv
+      
+      - name: Installing Dependencies
+        run: uv sync
+
+      - name: Linting
+        run: uv run task lint
+
+      - name: Type Checking
+        run: uv run mypy .
+      
+      - name: Testing
+        run: uv run task test
