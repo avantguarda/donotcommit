@@ -67,4 +67,4 @@ async def get_template(templates: str):
         content = f'## {template.capitalize()}\n\n{template_content}\n'
         gitignore_response += content
 
-    return gitignore_response
+    return gitignore_response.strip()
