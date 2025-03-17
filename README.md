@@ -21,8 +21,10 @@ To set up the development environment, you'll need to have Python 3.13 installed
 
 1. **Clone the Repository:**
 
+  Clone the repository with the submodule.
+
    ```sh
-   git clone git@github.com:brasilisclub/donotcommit.com.git
+   git clone --recurse-submodules git@github.com:brasilisclub/donotcommit.com.git
    cd donotcommit.com
    ```
 
