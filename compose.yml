@@ -1,6 +1,7 @@
 services:
   app:
     image: donotcommit-app
+    restart: unless-stopped
     build: .
     ports:
       - "8000:8000"

@@ -52,7 +52,7 @@ async def get_template(templates: str):
     gitignore_response = ''
     for template in templates_names:
         found_template = tuple(
-            GITIGNORE_FOLDER.glob(
+            GITIGNORE_FOLDER.rglob(
                 f'{template}.gitignore', case_sensitive=False
             )
         )
@@ -67,4 +67,4 @@ async def get_template(templates: str):
         content = f'## {template.capitalize()}\n\n{template_content}\n'
         gitignore_response += content
 
-    return gitignore_response
+    return gitignore_response.strip()

@@ -6,6 +6,9 @@ This API wil be compliant with [gitignore.io](https://www.toptal.com/developers/
 
 Nice, right?
 
+## Interactive Documentation
+Access the OpenAPI documentation at <https://donotcommit.com/docs> and see all our routes. This is a very simple API as you can notice :).
+
 ## Templates source
 For now, we are using [github/gitignore](https://github.com/github/gitignore) as the gitignore templates source, but we recognize that they take some time to accept PRs. This delay also motivated toptal team to make their own gitignore source, but it is archived now. That's why we are building an alternative.
 
@@ -21,8 +24,10 @@ To set up the development environment, you'll need to have Python 3.13 installed
 
 1. **Clone the Repository:**
 
+  Clone the repository with the submodule.
+
    ```sh
-   git clone git@github.com:brasilisclub/donotcommit.com.git
+   git clone --recurse-submodules git@github.com:brasilisclub/donotcommit.com.git
    cd donotcommit.com
    ```
 
