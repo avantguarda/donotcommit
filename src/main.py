@@ -2,10 +2,15 @@ from http import HTTPStatus
 from pathlib import Path
 from typing import Final
 
+import logfire
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import PlainTextResponse
 
+from src.settings import settings
+
 app = FastAPI(title='donotcommit.com')
+logfire.configure(token=settings.LOGFIRE_TOKEN)
+logfire.instrument_fastapi(app, capture_headers=True)
 
 PROJECT_ROOT: Final = Path(__file__).parent.parent
 GITIGNORE_FOLDER: Final = PROJECT_ROOT / 'gitignore'

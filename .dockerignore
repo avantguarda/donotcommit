@@ -130,7 +130,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+#.env # comenting for docker
 .venv
 env/
 venv/
