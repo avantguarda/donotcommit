@@ -4,6 +4,10 @@ on: [push, pull_request]
 jobs:
   lint:
     runs-on: ubuntu-latest
+
+    env:
+      LOGFIRE_TOKEN: ${ secrets.LOGFIRE_TOKEN }
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
