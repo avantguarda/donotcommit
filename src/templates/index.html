@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Create the perfect .gitignore file in seconds. Select your tech stack and generate a customized .gitignore for clean repositories.">
+	<meta name="author" content="Brasilis Club">
+
+	<meta property="og:title" content="Git Wisely | Do Not Commit">
+	<meta property="og:description" content="Generate customized .gitignore files for your tech stack">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://donotcommit.com/">
+	<meta property="og:image" content="https://donotcommit.com/static/images/og-image.jpg">
+
+	<link rel="shortcut icon" href="/static/favicon.ico" />
+	<link rel="manifest" href="/static/site.webmanifest" />
+	<meta name="apple-mobile-web-app-title" content="DontCommit" />
+	<link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+	<link rel="icon" type="image/png" href="/static/favicon-96x96.png" sizes="96x96" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
+	
+	<link rel="canonical" href="https://donotcommit.com/">
+	<title>Git Wisely | Do Not Commit by Brasilis Club</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/css/index.css">
+    </head>
+    <body>
+	<header>
+	    <h1><a href="https://brasilis.club">brasilis</a></h1>
+	    <nav>
+		<ul>
+		    <li><a href="https://github.com/brasilisclub/donotcommit">Source</a></li>
+		    <li><a href="/docs">Docs</a></li>
+		    <li><a class="highlight" href="https://github.com/sponsors/brasilisclub">Support</a></li>
+		</ul>
+	    </nav>
+	</header>
+	<main>
+	    <section>
+		<h1>Git wisely, know <br>what to <em>ignore</em></h1>
+		<form id="gitignore">
+		    <input type="text" 
+			   name="languages"
+			   placeholder="Enter technologies (e.g. Python, Rust, Zig...)"
+			   required
+			   pattern="^\s*[\w\-]+(?:\s+[\w\-]+)*(?:,\s*[\w\-]+(?:\s+[\w\-]+)*)*\s*$"
+			   title="Comma-separated list of technologies">
+		    <button type="submit">Generate</button>
+		</form>
+		<p>Select your tech stack, instantly get the perfect .gitignore file</p>
+	    </section>
+	</main>
+
+	<footer>
+	    <small>A clean repo initiative by <a href="https://brasilis.club">Brasilis Club</a> — Made in Brazil</small>
+	</footer>
+
+	<script>
+	    document.forms.gitignore.addEventListener('submit', event => {
+		event.preventDefault();
+		const input = event.target.elements.languages;
+
+		if (!event.target.checkValidity()) {
+		    input.reportValidity();
+		    return;
+		}
+
+		const technologies = input.value
+		    .trim()
+		    .split(',')
+		    .map(tech => tech.trim().replace(/\s+/g, ' '))
+		    .filter(Boolean)
+		    .map(encodeURIComponent);
+
+		if (technologies.length) {
+		    window.location.assign(`/api/${technologies.join(',')}`);
+		}
+	    });
+	</script>
+    </body>
+</html>

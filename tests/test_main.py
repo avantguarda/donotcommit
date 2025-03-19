@@ -9,7 +9,8 @@ async def test_read_root_must_return_hello_world(client: AsyncClient):
     response = await client.get('/')
 
     assert response.status_code == HTTPStatus.OK
-    assert response.json() == {'message': 'Hello, world!'}
+    assert response.headers['content-type'] == 'text/html; charset=utf-8'
+    assert response.text
 
 
 @pytest.mark.asyncio

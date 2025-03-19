@@ -3,12 +3,16 @@ from pathlib import Path
 from typing import Final
 
 import logfire
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import PlainTextResponse
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import HTMLResponse, PlainTextResponse
+from fastapi.staticfiles import StaticFiles
 
 from src.settings import settings
+from src.templates_conf import templates
 
 app = FastAPI(title='donotcommit.com')
+app.mount('/static', StaticFiles(directory='src/static'), name='static')
+
 logfire.configure(token=settings.LOGFIRE_TOKEN)
 logfire.instrument_fastapi(app, capture_headers=True)
 
@@ -17,9 +21,11 @@ GITIGNORE_FOLDER: Final = PROJECT_ROOT / 'gitignore'
 TEMPLATES: Final = tuple(GITIGNORE_FOLDER.rglob('*.gitignore'))
 
 
-@app.get('/')
-async def read_root():
-    return {'message': 'Hello, world!'}
+@app.get('/', response_class=HTMLResponse, include_in_schema=False)
+async def read_root(request: Request):
+    return templates.TemplateResponse(
+        'index.html', context={'request': request}
+    )
 
 
 @app.get('/api/list', response_class=PlainTextResponse)
