@@ -112,6 +112,7 @@ input, button {
 }
 
 input {
+  color: var(--text-color);
   background-color: var(--input-background);
   border: var(--border-width) solid transparent;
   width: 100%;
