@@ -58,7 +58,8 @@ async def get_template(templates: str):
     Example:
         `https://donotcommit.com/api/python,lua,zig`
     """
-    templates_names = templates.split(',')
+    templates = templates.strip(', ')
+    templates_names = [name.strip() for name in templates.split(',')]
 
     gitignore_response = ''
     for template in templates_names:
