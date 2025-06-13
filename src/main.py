@@ -15,6 +15,7 @@ app.mount('/static', StaticFiles(directory='src/static'), name='static')
 
 logfire.configure(token=settings.LOGFIRE_TOKEN)
 logfire.instrument_fastapi(app, capture_headers=True)
+logfire.instrument_system_metrics()
 
 PROJECT_ROOT: Final = Path(__file__).parent.parent
 GITIGNORE_FOLDER: Final = PROJECT_ROOT / 'gitignore'
