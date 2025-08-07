@@ -23,14 +23,14 @@ TEMPLATES: Final = tuple(GITIGNORE_FOLDER.rglob('*.gitignore'))
 
 
 @app.get('/', response_class=HTMLResponse, include_in_schema=False)
-async def read_root(request: Request):
+def read_root(request: Request):
     return templates.TemplateResponse(
         'index.html', context={'request': request}
     )
 
 
 @app.get('/api/list', response_class=PlainTextResponse)
-async def list_templates():
+def list_templates():
     """
     Lists all available gitignore templates by github.com/github/gitignore
     """
@@ -48,7 +48,7 @@ async def list_templates():
 
 
 @app.get('/api/{templates}', response_class=PlainTextResponse)
-async def get_template(templates: str):
+def get_template(templates: str):
     """
     Return gitignore content with all the languages.
     The template names should be passed in lower case, no spaces, and comma
